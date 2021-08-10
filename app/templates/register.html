@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Register!{% endblock %}
+
+{% block content %}
+<h1>Reigster your account!</h1>
+
+
+
+<form action="" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset>
+            {{ form.username.label }}
+            {{ form.username(class='form-control', placeholder='username') }}
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {%endfor%}
+        </fieldset>
+        <fieldset>
+            {{ form.password.label }}
+            {{ form.password(class='form-control', placeholder='password') }}
+        </fieldset>
+        <fieldset>
+            {{ form.confirm_password.label }}
+            {{ form.confirm_password(class='form-control', placeholder='confirm password') }}
+        </fieldset>
+        <fieldset>
+            {{ form.email.label }}
+            {{ form.email(class='form-control', placeholder='email') }}
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {%endfor%}
+        </fieldset>
+        <fieldset>
+            {{ form.address.label }}
+            {{ form.address(class='form-control', placeholder='address') }}
+            {% for error in form.address.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {%endfor%}
+        </fieldset>
+        <fieldset>
+            {{ form.city.label }}
+            {{ form.city(class='form-control', placeholder='city') }}
+            {% for error in form.city.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {%endfor%}
+        </fieldset>
+        <fieldset>
+            {{ form.state.label }}
+            {{ form.state(class='form-control', placeholder='state') }}
+            {% for error in form.state.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {%endfor%}
+        </fieldset>
+        <fieldset>
+            {{ form.zip_code.label }}
+            {{ form.zip_code(class='form-control', placeholder='zip_code') }}
+            {% for error in form.zip_code.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {%endfor%}
+        </fieldset>
+        {{ form.submit(class='btn btn-orange-moon border-dark') }}
+    </div>
+</form>
+
+{% endblock %}

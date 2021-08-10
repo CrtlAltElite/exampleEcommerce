@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="../static/img/scamazon_logo_master.png" alt="" width="125" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('main.index') }}">Home</a>
+                </li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users.user_update') }}">Update Your Account</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users.register') }}">Register</a>
+                </li>
+                {% endif %}
+            </ul>
+            <form class="d-flex">
+                <ul class="navbar-nav ms-auto">
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('users.logout') }}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{  url_for('users.login') }}">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </form>
+            <form class="d-flex">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        {% if current_user.is_authenticated %}
+                        {% if cart_empty %}
+                        <a class="nav-link" href="{{  url_for('products.show_cart') }}"><img
+                                src="../static/img/cart_button.jpg" alt="" width="100" height="50"></a>
+                        {% else %}
+                        <a class="nav-link" href="{{  url_for('products.show_cart') }}"><img
+                                src="../static/img/cart_w_items.jpg" alt="" width="100" height="50"></a>
+                        {% endif %}
+                        {% else %}
+                        <a class="nav-link" href="{{  url_for('products.show_cart') }}"><img
+                                src="../static/img/cart_button.jpg" alt="" width="100" height="50"></a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,57 @@
+/* CSS for Index page display of cards */
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.card {
+    width: 18rem;
+}
+
+.card-text {
+    height: 5rem;
+}
+
+/* CSS for shopping cart */
+.img-cart {
+    display: block;
+    max-width: 150px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/* CSS for login page */
+.btn-orange-moon {
+    background: #fc4a1a;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #f7b733, #FF9900);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #f7b733, #FF9900); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: black;
+    border: 2px solid slategray;
+}
+
+.link {
+    color: #0066c0
+}
+
+.text-divider{
+    margin: 2em 0;
+    line-height: 0; 
+    color: slategray;
+    text-align: center;
+}
+
+.text-divider span{ 
+    background-color: white;
+    padding: 1em;
+}
+
+.text-divider:before{ 
+    content: " "; 
+    display: block; 
+    border-top: 1px solid slategray; 
+    border-bottom: 1px solid #f7f7f7;
+}

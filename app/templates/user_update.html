@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{%block title%} Fix your stuff {%endblock%}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<h3>Update user: {{ user.username }}</h3>
+<div class="container-fluid">
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <fieldset>
+                {{ form.username.label }}
+                {{ form.username(class='form-control', value=user.username) }}
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {%endfor%}
+            </fieldset>
+            <fieldset>
+                {{ form.email.label }}
+                {{ form.email(class='form-control', value=user.email) }}
+                {% for error in form.email.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {%endfor%}
+            </fieldset>
+            <fieldset>
+                {{ form.address.label }}
+                {{ form.address(class='form-control', value=user.address) }}
+                {% for error in form.address.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {%endfor%}
+            </fieldset>
+            <fieldset>
+                {{ form.city.label }}
+                {{ form.city(class='form-control', value=user.city) }}
+                {% for error in form.city.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {%endfor%}
+            </fieldset>
+            <fieldset>
+                {{ form.state.label }}
+                {{ form.state(class='form-control', value=user.state) }}
+                {% for error in form.state.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {%endfor%}
+            </fieldset>
+            <fieldset>
+                {{ form.zip_code.label }}
+                {{ form.zip_code(class='form-control', value=user.zip_code) }}
+                {% for error in form.zip_code.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {%endfor%}
+            </fieldset>
+            {{ form.submit(class='btn btn-orange-moon border-dark') }}
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

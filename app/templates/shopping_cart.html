@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{%block title%}Buy Things {%endblock%}
+
+{% block content %}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-9 col-sm-8 content">
+            <div class="col-md-12">
+                <div class="panel-body">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <h3>Product</h3>
+                                </th>
+                                <th>
+                                    <h3>Description</h3>
+                                </th>
+                                <th>
+                                    <h3>Price</h3>
+                                </th>
+                                <th></th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+
+                            {% for item in items %}
+                            <tr>
+                                <td><img src=" {{ item[1].sm_image_url }}" class="img-cart">
+                                </td>
+                                <td class="align-middle">
+                                    <h3>{{item[1].name}}</h3>
+                                </td>
+                                <td class="align-middle">
+                                    <h3>{{item[1].price}}</h3>
+                                </td>
+                                <td class="align-middle">
+                                    <form action="{{ url_for('products.remove_items', cart_id=item[0].id)}}"
+                                        method="POST">
+                                        {{ form.hidden_tag() }}
+                                        {{form.remove_item(class='btn btn-danger', value='Remove from cart')}}
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="card mb-3 m-3 g-3 p-3 mx-auto" style="max-width: 500px; border: none">
+            <div class="row g-0"></div>
+
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="text-center">Total: ${{sum}}</h4>
+                    <form action="{{ url_for('products.clear_cart')}}" method="POST">
+                        {{ form.hidden_tag() }}
+                        {{form.clear_cart(class='btn btn-danger border-dark btn-lg m-3 p-3', value='Clear Cart')}}
+                    </form>
+                    <form action="{{ url_for('products.check_out')}}" method="POST">
+                        {{ form.hidden_tag() }}
+                        {{form.check_out(class='btn btn-orange-moon border-dark btn-lg m-3 p-3', value='Check Out')}}
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+{%endblock %}
